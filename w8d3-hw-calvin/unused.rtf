@@ -1,0 +1,123 @@
+  
+  
+  
+  <button onClick={this.changePage} id="ships">Show me the Ships!!!</button>
+        <button onClick={this.changePage} id="planets">Show me the PLANETS!!!</button>
+        <button onClick={this.changePage} id="people">Show me the CHARACTERS!!!</button>
+        {
+          this.state.chosenPage === null ?
+            null
+            :
+            this.state.chosenPage === "ships" ?
+              <ShipsContainer></ShipsContainer>
+              :
+              this.state.chosenPage === "planets" ?
+                <PlanetsContainer></PlanetsContainer>
+                :
+                <PeopleContainer></PeopleContainer>
+        }
+      </div>
+    );
+  }
+}
+
+export default App;
+
+
+
+
+
+
+
+
+var RequestHandler = require('./handlers/RequestHandler');
+
+
+var serverUrl = "https://api.giphy.com";
+
+/**
+ * Class representing the networking client.
+ */
+
+
+class GphApiClient {
+
+  constructor(apiKey) {
+    this.apiKey = apiKey;
+  }
+
+  /**
+   * Initialize the SDK by passing in the apiKey.
+   */
+  setCredentials(apiKey) {
+    this.apiKey = apiKey;
+  }
+
+  /**
+   * @return a list of gifs that match the inputted search query
+   * @param {String} type - specify whether it is a gif or a sticker
+   * @param {Object} params an object containing parameters
+   * @param {String} params.q search query term or phrase
+   * @param {Integer} params.limit (optional) number of results to return, maximum 100. Default 25.
+   * @param {Integer} params.offset(optional) results offset, defaults to 0.
+   * @param {String}  params.rating (optional) limit results to those rated (y,g, pg, pg-13 or r).
+   * @param {String} params.lang (optional) specify default country for regional content; format is 2-letter ISO 639-1 country code. See list of supported languages here
+   * @param {Function} callback (optional) callback will default to a promise if nothing is passed in
+   */
+  search(type, params, cb) {
+
+    const data = {
+      //grabs the correct endpoint from an object
+      url: `${serverUrl}/v1/${type}/search`,
+      method: 'get',
+      type: type,
+      params: _.extend({
+        api_key: this.apiKey
+      }, params)
+    }
+
+    return RequestHandler(data, 'search', cb);
+  }
+
+
+
+
+
+import React, {Component} from 'react';
+
+
+class SearchContainer extends Component{
+    constructor(){
+        super();
+        this.state = {
+        
+    }
+}
+
+
+render(){
+    const giffyList = this.props.giffys.map((giffy, i) => {
+        const formattedTime = this.timeConverter(giffy.properties.time);
+        console.log(formattedTime);
+        return (
+            <div id = "info" key = {i}>
+                <p>M {giffy.properties.mag} - {giffy.properties.place} / {formattedTime}</p>
+            </div>
+        )
+    })
+    return (
+        <div>
+            {giffyList}
+        </div>
+    )
+}
+}
+
+
+export default SearchContainer;
+
+
+
+
+
+
