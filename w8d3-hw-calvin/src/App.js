@@ -1,36 +1,42 @@
 import React, {Component} from 'react';
-import SearchContainer from './SearchContainer/SearchContainer';
+import GiphyContainer from './GiphyContainer/GiphyContainer';
 import './App.css';
-import MainSearchForm from './MainSearch/MainSearch';
+//import MainSearchForm from './GiphySeachForm/GiphySearchForm';
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      query: '',
-      empty: true
+     chosenPage: null
     }
   }
-  handleSearch = (query) => {
-    console.log(query, '<---in app.js handlesearch');
+  handleSearch = (e) => {
+    console.log(e.target.id, '<---in app.js handlesearch');
     this.setState({
-      query: query,
-      empty: false
+      chosenPage: e.target.id
     })
   }
   
   render(){
     console.log(this.state, '<--in app.js');
     return (
-      <div> 
-        {!this.state.empty ? <MainSearchForm query={this.state.querty}/> : <SearchContainer handleSearch={this.hanldeSearch}/>}
+      <div>
+        <h3>Giphy Seach</h3> 
+        <button onClick={this.handleSearch} id="giphys"> Show Searchbar </button>
+        {
+          this.state.chosenPage === null ?
+            null
+            :
+            <GiphyContainer></GiphyContainer>
+           
+        }
       </div>
-    )
+    );
   }      
 }  
 export default App;
   
   
-  
+//{!this.state.empty ? <MainSearchForm query={this.state.query}/> : <SearchContainer handleSearch={this.hanldeSearch}/>}
   
   

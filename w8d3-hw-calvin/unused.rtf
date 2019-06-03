@@ -121,3 +121,94 @@ export default SearchContainer;
 
 
 
+
+
+
+
+// class GiphyContainer extends Component{
+//     constructor(props){
+//         super(props);
+//         this.state = {
+//             giphy: []
+//             // loading: true
+//         }
+//     }
+//     // componentWillMount(){
+//     //     this.getGiphys({search: ""});
+//     // }
+
+//     searchGiphys = async (formData) => {
+//         let url = `http://api.giphy.com/v1/gifs/search?${formData.search}&api_key=AWqW5zAzkEfXW9KFd8meD4EQIcL7wVxm`;
+//         // try{
+//             const result = await fetch(url);
+// 			console.log(result, '<---------json gifs');
+// 			const parsedResult = await result.json()
+// 			await this.setState({
+// 				giphy: parsedResult.data
+// 			})
+//             // if(!giphy.ok){
+//             //     throw Error(giphy.statusText);
+//             // }
+//             // const parsedResult = await gifs.json();
+//             // console.log(parsedResult, 'parsed result');
+//             // return parsedResult;
+        
+//         // }catch(err) {
+//         //     console.log(err, '<-- error in MainSearch catch block');
+//         //     return err;
+//         // } 
+//     }
+
+//     // componentDidMount() {
+//     //     this.getGiphys().then((data) => {
+//     //         this.setState({
+//     //             gifs: data,
+//     //             loading: false
+//     //         })
+//     //     })
+//     // }
+//     render(){
+// 		console.log(this.state, "<------this.state in the render block of GiphyContainer")
+// 		const giphyList = this.state.giphy.map((gif, i)=>{
+// 			return(
+// 				<div key={i}>
+// 					<img src={gif.images.downsized_medium.url} alt="this.giphy"/>
+// 				</div>
+// 			)
+// 		})
+// 		return(
+//             <div className="seachGiphys">
+// 				<h2>Giphy Container</h2>
+// 				<GiphySearchForm searchGiphys={this.searchGiphys}></GiphySearchForm>
+// 				{giphyList}
+               
+//             </div>
+//         )
+//     }
+// }
+
+// export default GiphyContainer;
+
+// // const GiphyContainer = (props) => {
+// // 	const giphyList = props.gifs.data.map((gif, i) => {
+// // 		return (
+// // 			<ul key={i}>
+// // 			<img src={gif.images.downsized.url} alt="gif images"></img>
+
+// // 			</ul>
+// // 		)
+// // 	})
+
+// // 	return(
+// // 		<div className="giphyContainer">
+// // 			{giphyList}
+// // 		</div>
+// // 	)
+// // }
+
+// export default GiphyContainer;
+
+
+
+ {/* <h1 id="h1">Your search for {this.props.query} gifs: </h1>
+                {this.state.loading ? <span>Data is loading...</span> : <GiphyList gifs={this.state.gifs}/>} */}
